@@ -3,9 +3,9 @@ import * as THREE from "three";
 
 // function for adding stars at random positions
 function addStar() {
-	const geometry = new THREE.DodecahedronGeometry(0.3);
+	const geometry = new THREE.DodecahedronGeometry(0.15);
 	const material = new THREE.MeshBasicMaterial({
-		color: 0xf4f5f0,
+		color: 0xffffff,
 	});
 	const star = new THREE.Mesh(geometry, material);
 

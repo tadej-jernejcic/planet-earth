@@ -2,8 +2,9 @@ import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/Addons.js";
 import addStar from "./addStar";
 import animate from "./animate";
+import onMouseDown from "./onMouseDown";
 
-let scene, camera, renderer, planet, controls;
+let scene, camera, renderer, planet, controls, box1, box2, box3;
 
 function start() {
 	scene = new THREE.Scene();
@@ -40,11 +41,22 @@ function start() {
 	// add the planet
 	addPlanet();
 
+	// make cones
+	box1 = makeBox(0, 10, 6);
+	box1.name = "africa";
+	box2 = makeBox(-4, -8, -8);
+	box2.name = "oceans";
+	box3 = makeBox(-10, 0, 7);
+	box3.name = "america";
+
 	//draw
 	renderer.render(scene, camera);
 
 	// animate
 	animate();
+
+	// Add click event listener
+	document.addEventListener("mousedown", onMouseDown, false);
 }
 
 function addPlanet() {
@@ -54,6 +66,7 @@ function addPlanet() {
 		map: planetTexture,
 	});
 	planet = new THREE.Mesh(geometry, material);
+	planet.name = "earth";
 
 	planet.rotation.y = 23.5;
 	planet.rotation.z = 120;
@@ -62,5 +75,23 @@ function addPlanet() {
 	scene.add(planet);
 }
 
-export { scene, camera, renderer, planet, controls };
+function makeBox(x, y, z) {
+	const geometry = new THREE.BoxGeometry(1, 1, 1);
+	const material = new THREE.MeshBasicMaterial({
+		color: 0xffffff,
+		wireframe: true,
+	});
+	const box = new THREE.Mesh(geometry, material);
+
+	box.position.set(x, y, z);
+
+	// Add the cone as a child of the planet
+	planet.add(box);
+
+	scene.add(box);
+
+	return box;
+}
+
+export { scene, camera, renderer, planet, controls, box1, box2, box3 };
 export default start;

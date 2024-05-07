@@ -1,14 +1,24 @@
-import { scene, camera, renderer, planet, controls } from "./start.js";
+import {
+	scene,
+	camera,
+	renderer,
+	controls,
+	box1,
+	box2,
+	box3,
+} from "./start.js";
 
 // main animation loop
 function animate() {
 	requestAnimationFrame(animate);
 
-	// rotate planet
-	planet.rotation.y += 0.002;
-
 	// rotate camera
-	camera.position.x += 0.005;
+	camera.position.x += 0.015;
+
+	// rotate cones
+	box1.rotation.x += 0.005;
+	box2.rotation.x += 0.005;
+	box3.rotation.x += 0.005;
 
 	// update controls
 	controls.update();
