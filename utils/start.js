@@ -3,6 +3,7 @@ import { OrbitControls } from "three/examples/jsm/Addons.js";
 import addStar from "./addStar";
 import animate from "./animate";
 import onMouseDown from "./onMouseDown";
+import earthImage from "../src/assets/earth.jpg";
 
 let scene, camera, renderer, planet, controls, box1, box2, box3;
 
@@ -61,7 +62,7 @@ function start() {
 
 function addPlanet() {
 	const geometry = new THREE.SphereGeometry(10, 32, 32);
-	const planetTexture = new THREE.TextureLoader().load("../assets/earth.jpg");
+	const planetTexture = new THREE.TextureLoader().load(earthImage);
 	const material = new THREE.MeshBasicMaterial({
 		map: planetTexture,
 	});
