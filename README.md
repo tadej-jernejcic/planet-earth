@@ -6,6 +6,10 @@
 
 **Planet-Earth** is a web application developed with Vite and ThreeJS to create a dynamic 3D representation of Earth. This project focuses on illustrating various ecological problems our planet faces, aiming to raise awareness through interactive visualization.
 
+## Live Demo
+
+See the project in action [here.](https://planet-earth-ebon.vercel.app/)
+
 ## Features
 
 -   **3D Globe Visualization**: Users can interact with a rotatable 3D model of Earth.
